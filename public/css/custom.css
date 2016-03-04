@@ -1,0 +1,93 @@
+
+.color_18 {color:#ED8600;}
+
+
+/*medium+ screen sizes*/
+@media (min-width:992px) {
+    .desktop-only {
+        display:block !important;
+    }
+
+    .desktop-width {
+        width: 60%;
+    }
+    .tips-width {
+        width: 40%;
+    }
+}
+
+/*small screen sizes*/
+@media (max-width: 991px) {
+    .mobile-only {
+        display:block !important;
+    }
+
+    .desktop-only {
+        display:none !important;
+    }
+}
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+/*
+.container {
+    width: auto;
+    max-width: 680px;
+    padding: 0 15px;
+}*/
+.container .text-muted {
+    margin: 20px 0;
+}
+
+
+/*menu dropdown on hover rather than click*/
+@media (min-width: 979px) {
+    ul.nav li.dropdown:hover > ul.dropdown-menu {
+        display: block;
+    }
+}
+
+
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus,
+.navbar-inverse .navbar-nav > li > ul > li> a:hover,
+.navbar-inverse .navbar-nav > li > ul > li> a:focus,
+.navbar-inverse .navbar-nav > li > ul > li .active,
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus{
+    background-color: #ED8600;
+    color: #ffffff;
+}
+
+.navbar .nav > li > a, .navbar .nav > li > a,
+.navbar .nav > li.current-menu-item > a,
+.navbar .nav > li.current-menu-ancestor > a {
+    /*display:        inline;*/
+    /*color:          red;*/
+    /*font-family:    Garamond;*/
+    font-size:      1.5em;
+    /*padding:        5px 20px;*/
+}
