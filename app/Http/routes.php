@@ -11,24 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
-/*Route::get('/home', function () {
-    return view('home');
-});*/
-
-Route::get('/home','ArticleController@home');
-
-Route::get('/price_list','ArticleController@price_list');
-
-Route::get('/tips','ArticleController@tips');
-
-Route::get('/signin','ArticleController@signin');
-
-Route::post('/result','ArticleController@result');
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -43,8 +27,11 @@ Route::post('/result','ArticleController@result');
 Route::group(['middleware' => ['web']], function () {
 
     Route::auth();
-
+    Route::get('/', 'HomeController@index');
     Route::get('/home', 'HomeController@index');
+    Route::get('/tips','HomeController@tips');
+    Route::get('/price_list','HomeController@price_list');
+
 });
 
 

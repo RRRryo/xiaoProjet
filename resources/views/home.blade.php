@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+<?php $page="home"  ?>
 @section('content')
     <div class="container ">
 
