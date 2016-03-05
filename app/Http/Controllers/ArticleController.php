@@ -23,4 +23,15 @@ class ArticleController extends Controller
     {
         return view("tips");
     }
+
+    public function signin()
+    {
+        return view("signin");
+    }
+
+    public function result()
+    {
+        $email = Request::input('inputEmail');
+        return view("result" );
+    }
 }

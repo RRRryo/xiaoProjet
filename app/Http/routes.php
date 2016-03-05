@@ -26,6 +26,9 @@ Route::get('/price_list','ArticleController@price_list');
 
 Route::get('/tips','ArticleController@tips');
 
+Route::get('/signin','ArticleController@signin');
+
+Route::post('/result','ArticleController@result');
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -38,5 +41,12 @@ Route::get('/tips','ArticleController@tips');
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
 });
+
+
+Route::resource('users', 'UsersController');
+
