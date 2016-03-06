@@ -10,17 +10,19 @@
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="js/html5shiv.min.js"></script>
-    <script src="js/respond.min.js"></script>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
     <![endif]-->
 
     <title>X express</title>
 
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/custom.css" rel="stylesheet"/>
-    <link href="css/patch.css" rel="stylesheet"/>
+    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/css/custom.css" rel="stylesheet"/>
+    <link href="/css/patch.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
     @yield('css')
 
 </head>
@@ -39,7 +41,7 @@
     <div class="col-sm-3 full-height pull-right" style="z-index: -1;">
         <div class="container-xs-height full-height">
             <div class="col-xs-height col-middle text-left">
-                <div class="col-md-11 desktop-only" > <img src="img/man1.png" align="right" alt="deliver man" > </div>
+                <div class="col-md-11 desktop-only" > <img src="/img/man1.png" align="right" alt="deliver man" > </div>
             </div>
         </div>
     </div>
@@ -63,8 +65,10 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav" >
                         <li @if ($page == 'home') class="active" @endif ><a href="home">首页</a></li>
+                        <li @if ($page == 'price_list') class="active" @endif ><a href="price_list">价格列表</a></li>
+                        <li @if ($page == 'tips') class="active" @endif ><a href="tips">邮寄须知</a></li>
 
-                        <li class="dropdown @if ($page == 'price_list' || $page == 'tips' ) active @endif" >
+                        {{--<li class="dropdown @if ($page == 'price_list' || $page == 'tips' ) active @endif" >
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                aria-expanded="false">国际快递<span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -73,28 +77,28 @@
                                 <li @if ($page == 'tips') class="active" @endif><a href="tips">邮寄须知</a></li>
                                 <li><a href="#">菜鸟代购</a></li>
                             </ul>
-                        </li>
+                        </li>--}}
 
-                        <li class="dropdown" ><a href="#">网上商城</a></li>
+                        {{--<li class="dropdown" ><a href="#">网上商城</a></li>--}}
 
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">登录</a></li>
-                            <li><a href="{{ url('/register') }}">注册</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                            @if (Auth::guest())
+                                <li @if ($page == 'login') class="active" @endif><a href="{{ url('login') }}">登录</a></li>
+                                <li @if ($page == 'register') class="active" @endif><a href="{{ url('register') }}">注册</a></li>
+                            @else
+                                <li class="dropdown">
+                                    <a href="#" onclick="location.href='dashboard'" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                    </a>
 
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                                </ul>
-                            </li>
-                        @endif
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> 登出 </a></li>
+                                    </ul>
+                                </li>
+                            @endif
                     </ul>
                 </div>
                 <!--/.nav-collapse -->
@@ -108,16 +112,16 @@
 
 <footer class="footer">
     <div class="container">
-        <p class="text-muted">Place sticky footer content here.</p>
+        <p class="text-muted">Copyright © X-parcel</p>
     </div>
 </footer>
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="/js/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
-<script src="js/custom.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/custom.js"></script>
 
 </body>
 </html>

@@ -9,7 +9,7 @@
 namespace App\Http\Controllers;
 
 
-class Dashboard extends Controller
+class DashboardController extends Controller
 {
 
     public function __construct()
@@ -19,7 +19,11 @@ class Dashboard extends Controller
 
     public function show()
     {
-        return view("dashboard");
+        return view("dashboard/dashboard");
     }
 
+    public function resetPassword()
+    {
+        return view("dashboard/reset_password");
+    }
 }

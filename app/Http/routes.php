@@ -31,6 +31,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/home', 'HomeController@index');
     Route::get('/tips','HomeController@tips');
     Route::get('/price_list','HomeController@price_list');
+    Route::get('/dashboard','DashboardController@show');
+    Route::get('/dashboard/reset_password','DashboardController@resetPassword');
 
 });
 
