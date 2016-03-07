@@ -9,6 +9,11 @@ use App\Http\Requests;
 
 class RecipientsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function show()
     {
         $recipients = Recipient::where('user_id', 1);
