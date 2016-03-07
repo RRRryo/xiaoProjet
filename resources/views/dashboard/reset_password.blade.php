@@ -5,11 +5,16 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            @if (session('message'))
+                <div class="alert alert-danger">
+                    {{ session('message') }}
+                </div>
+            @endif
             <div class="panel panel-warning">
                 <div class="panel-heading">重置密码</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/reset') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/dashboard/reset_password') }}">
                         {!! csrf_field() !!}
 
 {{--                        <input type="hidden" name="token" value="{{ $token }}">--}}
@@ -27,12 +32,24 @@
                                 @endif
                             </div>
                         </div>--}}
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">密码</label>
+                        <div class="form-group{{ $errors->has('oldPassword') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">原密码</label>
 
                             <div class="col-md-6">
-                                <input type="password" class="form-control" name="password"  placeholder="输入密码" required="">
+                                <input type="password" class="form-control" name="oldPassword"  placeholder="输入原密码" required="">
+
+                                @if ($errors->has('oldPassword'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('oldPassword') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">新密码</label>
+
+                            <div class="col-md-6">
+                                <input type="password" class="form-control" name="password"  placeholder="输入新密码" required="">
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">

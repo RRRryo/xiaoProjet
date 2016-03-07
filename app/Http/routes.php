@@ -32,8 +32,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/tips','HomeController@tips');
     Route::get('/price_list','HomeController@price_list');
     Route::get('/dashboard','DashboardController@show');
-    Route::get('/dashboard/reset_password','DashboardController@resetPassword');
-
+    Route::get('/dashboard/recipients','DashboardController@show');
+    Route::resource('/dashboard/recipients', 'RecipientsController@show');
+    Route::get('/dashboard/reset_password','DashboardController@showResetPasswordForm');
+    Route::post('/dashboard/reset_password','DashboardController@resetPassword');
 });
 
 

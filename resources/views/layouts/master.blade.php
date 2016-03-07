@@ -64,9 +64,9 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav" >
-                        <li @if ($page == 'home') class="active" @endif ><a href="home">首页</a></li>
-                        <li @if ($page == 'price_list') class="active" @endif ><a href="price_list">价格列表</a></li>
-                        <li @if ($page == 'tips') class="active" @endif ><a href="tips">邮寄须知</a></li>
+                        <li @if ($page == 'home') class="active" @endif ><a href="/home">首页</a></li>
+                        <li @if ($page == 'price_list') class="active" @endif ><a href="/price_list">价格列表</a></li>
+                        <li @if ($page == 'tips') class="active" @endif ><a href="/tips">邮寄须知</a></li>
 
                         {{--<li class="dropdown @if ($page == 'price_list' || $page == 'tips' ) active @endif" >
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -86,11 +86,11 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                             @if (Auth::guest())
-                                <li @if ($page == 'login') class="active" @endif><a href="{{ url('login') }}">登录</a></li>
-                                <li @if ($page == 'register') class="active" @endif><a href="{{ url('register') }}">注册</a></li>
+                                <li @if ($page == 'login') class="active" @endif><a href="{{ url('/login') }}">登录</a></li>
+                                <li @if ($page == 'register') class="active" @endif><a href="{{ url('/register') }}">注册</a></li>
                             @else
                                 <li class="dropdown">
-                                    <a href="#" onclick="location.href='dashboard'" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    <a href="#" onclick="location.href='/dashboard'" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                         {{ Auth::user()->name }} <span class="caret"></span>
                                     </a>
 

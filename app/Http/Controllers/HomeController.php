@@ -24,17 +24,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('/home');
     }
 
 
     public function price_list()
     {
-        return view("price_list");
+        return view("/price_list");
     }
 
     public function tips()
     {
-        return view("tips");
+        return view("/tips");
     }
 }
