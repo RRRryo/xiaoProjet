@@ -35,7 +35,12 @@ class RecipientsController extends Controller
         return view('/dashboard/recipients/index', compact('recipients'));
     }
 
-    public function edit(Request $id) {
+    public function edit(Request $request) {
+        $this->validate($request, [
+            'id' => 'required'
+        ]);
+        $id = $request->get('id');
+
         $recipient = Recipient::find($id);
         return view('/dashboard/recipients/edit', compact('recipient'));
     }
