@@ -1,5 +1,5 @@
 @extends('layouts.master')
-<?php $page="tips"  ?>
+<?php $page="/tips"  ?>
 @section('content')
     <div class="container  tips-width" >
         <div class="jumbotron color_18">

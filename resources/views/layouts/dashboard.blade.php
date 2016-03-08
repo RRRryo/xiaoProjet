@@ -6,12 +6,13 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="/favicon.ico">
 
     <title>X parcel Dashboard</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     {{--<link href="/css/ie10-viewport-bug-workaround.css" rel="stylesheet">--}}
@@ -44,7 +45,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="home"><span class="color_18">X</span> parcel</a>
+            <a class="navbar-brand" href="/home"><span class="color_18">X</span> parcel</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -79,15 +80,18 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="#">总览 <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">收件人管理</a></li>
-                <li><a href="#">寄件人管理</a></li>
-                <li><a href="#">充值记录</a></li>
-                <li><a href="">我的订单</a></li></li>
-                <li><a href="dashboard/reset_password">更改密码</a></li>
+                <li @if ($page == '/dashboard/overview') class="active" @endif><a href="/dashboard">总览</a></li>
+                <li @if ($page == '/dashboard/recipients/index') class="active" @endif><a href="/dashboard/recipients">收件人管理</a></li>
+                <li @if ($page == '/dashboard') class="active" @endif><a href="#">寄件人管理</a></li>
+                <li @if ($page == '/dashboard') class="active" @endif><a href="#">充值记录</a></li>
+                <li @if ($page == '/dashboard') class="active" @endif><a href="">我的订单</a></li></li>
+                <li @if ($page == '/dashboard/reset_password') class="active" @endif><a href="dashboard/reset_password">更改密码</a></li>
             </ul>
         </div>
-        @yield("content")
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+            @yield("content")
+        </div>
     </div>
 </div>
 

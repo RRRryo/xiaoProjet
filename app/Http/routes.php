@@ -33,11 +33,14 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/price_list','HomeController@price_list');
     Route::get('/dashboard','DashboardController@show');
     Route::get('/dashboard/recipients','DashboardController@show');
-    Route::resource('/dashboard/recipients', 'RecipientsController@show');
+    Route::resource('/dashboard/recipients','RecipientsController');
+//    Route::get('/dashboard/recipients/create','DashboardController@create');
+//    Route::get('/dashboard/recipients/update','DashboardController@update');
+//    Route::get('/dashboard/recipients', 'RecipientsController@show');
     Route::get('/dashboard/reset_password','DashboardController@showResetPasswordForm');
     Route::post('/dashboard/reset_password','DashboardController@resetPassword');
 });
 
 
-Route::resource('users', 'UsersController');
+//Route::resource('users', 'UsersController');
 

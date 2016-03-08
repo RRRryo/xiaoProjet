@@ -1,5 +1,5 @@
 @extends('layouts.master')
-<?php $page="price_list"  ?>
+<?php $page="/price_list"  ?>
 @section('content')
     <div class="container" id="price_content" align="center">
 

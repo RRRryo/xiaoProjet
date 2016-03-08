@@ -29,8 +29,11 @@
 <body>
 <div class="container">
 
-    <div class="col-sm-5 full-height" style="z-index: 1;">
-        <h1 style=" font-weight: bold;">X<span class="color_18">express</span></h1>
+    <div class="col-sm-5 " style="z-index: 1;">
+        <div class="col-sm-12">
+        <a href="/home"><img class="img-responsive" src="/img/remark.png" align="left" alt="X pacel" ></a>
+        </div>
+        {{--<h1 style=" font-weight: bold;">X<span class="color_18">express</span></h1>--}}
         <h2>You pick the location,<br>
             we will take care of the rest</h2>
         <p>
@@ -64,9 +67,9 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav" >
-                        <li @if ($page == 'home') class="active" @endif ><a href="/home">首页</a></li>
-                        <li @if ($page == 'price_list') class="active" @endif ><a href="/price_list">价格列表</a></li>
-                        <li @if ($page == 'tips') class="active" @endif ><a href="/tips">邮寄须知</a></li>
+                        <li @if ($page == '/home') class="active" @endif ><a href="/home">首页</a></li>
+                        <li @if ($page == '/price_list') class="active" @endif ><a href="/price_list">价格列表</a></li>
+                        <li @if ($page == '/tips') class="active" @endif ><a href="/tips">邮寄须知</a></li>
 
                         {{--<li class="dropdown @if ($page == 'price_list' || $page == 'tips' ) active @endif" >
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
