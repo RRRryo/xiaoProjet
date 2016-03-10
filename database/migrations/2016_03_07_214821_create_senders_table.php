@@ -21,7 +21,7 @@ class CreateSendersTable extends Migration
             $table->string('postal_code');
             $table->string('city');
             $table->string('country');
-            $table->string('note');
+            $table->string('note')->nullable();
             $table->integer('user_id')->unsigned();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');

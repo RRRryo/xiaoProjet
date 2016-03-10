@@ -1,15 +1,27 @@
 @extends('layouts.dashboard')
-<?php $page="/dashboard/recipients/show"  ?>
+<?php $page="/dashboard/recipients/"  ?>
 @section('content')
+    @if (session('failed'))
+        <div class="alert alert-danger">
+            {{ session('failed') }}
+        </div>
+    @endif
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <h2 class="sub-header">我的收件人</h2>
 
     <div class="row panel">
         <form class="form-group" action="/dashboard/recipients" method="GET">
-            <div class="col-md-3"><input class="form-control" type="text" name="search" value="" placeholder="姓名、公司、地址    或者电话..."/></div>
+            <div class="col-md-3"><input class="form-control" type="text" name="search" value="" placeholder="姓名{{--、公司、地址    或者电话...--}}"/></div>
             <div class="col-md-3"><button class="btn btn-warning" type="submit"><i class="fa fa-btn fa-search "></i> 查找</button></div>
 
         </form>
-
+        <div class="pull-right">
+            <a type="button" class="btn btn-lg btn-link " href="/dashboard/recipients/create" >添加新收件人</a>
+        </div>
     </div>
 
     <div class="table-responsive">
@@ -33,7 +45,15 @@
                     <td>{{ $recipient->address}}</td>
                     <td>{{ $recipient->telephone}}</td>
                     <td><a href="{{ URL::to('/dashboard/recipients/' . $recipient->id . '/edit') }}">修改</a></td>
-                    <td><a href="#">删除</a></td>
+                    <form action="{{ URL::to('/dashboard/recipients/' . $recipient->id ) }}" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <td>
+                            <button class="btn-link" onclick="return confirm('您确定要删除已选收件人信息吗?')" type="submit" >删除</button></td>
+                    </form>
+
+
+{{--                    <td><a href="{{ URL::to('/dashboard/recipients/' . $recipient->id . '/edit') }}">删除</a></td>--}}
                 </tr>
                 @endforeach
             </tbody>

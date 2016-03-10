@@ -1,23 +1,21 @@
 @extends('layouts.dashboard')
 <?php $page="/dashboard/recipients/"  ?>
 @section('content')
+    {{--<h2 class="sub-header">新收件人</h2>--}}
 
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-warning">
-                <div class="panel-heading">修改收件人</div>
+                <div class="panel-heading">新收件人</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/dashboard/recipients/'. $recipient->id) }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/dashboard/recipients') }}">
                         {!! csrf_field() !!}
-
-                        <input type="hidden" name="_method" value="PUT">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">姓名</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="name" value="{{ $recipient->name}}" placeholder="输入姓名" required="" autofocus="">
+                                <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="输入姓名" required="" autofocus="">
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -31,7 +29,7 @@
                             <label class="col-md-4 control-label">证件号或公司</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="company" value="{{ $recipient->company }}" placeholder="输入证件号或公司" required="" autofocus="">
+                                <input type="text" class="form-control" name="company" value="{{ old('company') }}" placeholder="输入证件号或公司" required="" autofocus="">
 
                                 @if ($errors->has('company'))
                                     <span class="help-block">
@@ -45,7 +43,7 @@
                             <label class="col-md-4 control-label">地址</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="address" value="{{ $recipient->address }}" placeholder="输入地址" required="" autofocus="">
+                                <input type="text" class="form-control" name="address" value="{{ old('address') }}" placeholder="输入地址" required="" autofocus="">
 
                                 @if ($errors->has('address'))
                                     <span class="help-block">
@@ -58,7 +56,7 @@
                             <label class="col-md-4 control-label">邮编</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="postal_code" value="{{ $recipient->postal_code }}" placeholder="输入邮编" required="" autofocus="">
+                                <input type="text" class="form-control" name="postal_code" value="{{ old('postal_code') }}" placeholder="输入邮编" required="" autofocus="">
 
                                 @if ($errors->has('postal_code'))
                                     <span class="help-block">
@@ -72,7 +70,7 @@
                             <label class="col-md-4 control-label">城市</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="city" value="{{ $recipient->city }}" placeholder="输入城市" required="" autofocus="">
+                                <input type="text" class="form-control" name="city" value="{{ old('city') }}" placeholder="输入城市" required="" autofocus="">
 
                                 @if ($errors->has('city'))
                                     <span class="help-block">
@@ -86,7 +84,7 @@
                             <label class="col-md-4 control-label">国家</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="country" value="{{ $recipient->country }}" placeholder="输入国家" required="" autofocus="">
+                                <input type="text" class="form-control" name="country" value="{{ old('country') }}" placeholder="输入国家" required="" autofocus="">
 
                                 @if ($errors->has('country'))
                                     <span class="help-block">
@@ -100,7 +98,7 @@
                             <label class="col-md-4 control-label">电话</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="telephone" value="{{ $recipient->telephone }}" placeholder="输入电话" required="" autofocus="">
+                                <input type="text" class="form-control" name="telephone" value="{{ old('telephone') }}" placeholder="输入电话" required="" autofocus="">
 
                                 @if ($errors->has('telephone'))
                                     <span class="help-block">
@@ -137,5 +135,5 @@
     </div>
     {{--{{ $recipient->name}}--}}
 
-    {{--    {!! $recipients->render() !!}--}}
+{{--    {!! $recipients->render() !!}--}}
 @stop

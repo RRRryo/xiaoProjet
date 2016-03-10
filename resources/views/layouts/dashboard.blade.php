@@ -81,7 +81,7 @@
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
                 <li @if ($page == '/dashboard/overview') class="active" @endif><a href="/dashboard">总览</a></li>
-                <li @if ($page == '/dashboard/recipients/index') class="active" @endif><a href="/dashboard/recipients">收件人管理</a></li>
+                <li @if ($page == '/dashboard/recipients/') class="active" @endif><a href="/dashboard/recipients">收件人管理</a></li>
                 <li @if ($page == '/dashboard') class="active" @endif><a href="#">寄件人管理</a></li>
                 <li @if ($page == '/dashboard') class="active" @endif><a href="#">充值记录</a></li>
                 <li @if ($page == '/dashboard') class="active" @endif><a href="">我的订单</a></li></li>
@@ -101,6 +101,19 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')</script>
 <script src="/js/bootstrap.min.js"></script>
+{{--<script src="/js/bootbox.min.js"></script>--}}
+
+<script>
+    /*$(document).on("click", "button.alert", function(e) {
+        var link = $(this).attr("href"); // "get" the intended link in a var
+        e.preventDefault();
+        bootbox.confirm("Are you sure?", function(result) {
+            if (result) {
+                document.location.href = link;  // if result, "set" the document location
+            }
+        });
+    });*/
+</script>
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 {{--<script src="/js/ie10-viewport-bug-workaround.js"></script>--}}
