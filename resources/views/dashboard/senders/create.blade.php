@@ -1,14 +1,14 @@
 @extends('layouts.dashboard')
-<?php $page="/dashboard/recipients"  ?>
+<?php $page="/dashboard/senders"  ?>
 @section('content')
     {{--<h2 class="sub-header">新收件人</h2>--}}
 
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-warning">
-                <div class="panel-heading"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 新收件人</div>
+                <div class="panel-heading"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 新寄件人</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/dashboard/recipients') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/dashboard/senders') }}">
                         {!! csrf_field() !!}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -108,6 +108,19 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('note') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">备注（可选）</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="note" value="{{ old('note') }}" placeholder="输入备注" required="" autofocus="">
+
+                                @if ($errors->has('note'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('note') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                         {{--<div class="form-group{{ $errors->has('note') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">备注</label>
 
@@ -125,7 +138,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary btn-warning">
-                                    <i class="fa fa-btn fa-save"></i> 保存收件人 </button>
+                                    <i class="fa fa-btn fa-save"></i> 保存寄件人 </button>
                             </div>
                         </div>
                     </form>
@@ -133,7 +146,7 @@
             </div>
         </div>
     </div>
-    {{--{{ $recipient->name}}--}}
+    {{--{{ $sender->name}}--}}
 
-{{--    {!! $recipients->render() !!}--}}
+{{--    {!! $senders->render() !!}--}}
 @stop

@@ -67,9 +67,9 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav" >
-                        <li @if ($page == '/home') class="active" @endif ><a href="/home">首页</a></li>
-                        <li @if ($page == '/price_list') class="active" @endif ><a href="/price_list">价格列表</a></li>
-                        <li @if ($page == '/tips') class="active" @endif ><a href="/tips">邮寄须知</a></li>
+                        <li @if ($page == '/home') class="active" @endif ><a href="/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 首页</a></li>
+                        <li @if ($page == '/price_list') class="active" @endif ><a href="/price_list"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 价格列表</a></li>
+                        <li @if ($page == '/tips') class="active" @endif ><a href="/tips"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span> 邮寄须知</a></li>
 
                         {{--<li class="dropdown @if ($page == 'price_list' || $page == 'tips' ) active @endif" >
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -89,19 +89,21 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                             @if (Auth::guest())
-                                <li @if ($page == 'login') class="active" @endif><a href="{{ url('/login') }}">登录</a></li>
-                                <li @if ($page == 'register') class="active" @endif><a href="{{ url('/register') }}">注册</a></li>
+                            <li @if ($page == 'register') class="active" @endif><a href="{{ url('/register') }}"><span class="glyphicon glyphicon-registration-mark" aria-hidden="true"></span> 注册</a></li>
+                            <li @if ($page == 'login') class="active" @endif><a href="{{ url('/login') }}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 登录</a></li>
                             @else
-                                <li class="dropdown">
-                                    <a href="#" onclick="location.href='/dashboard'" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                <li {{--class="dropdown"--}}>
+                                    <a href="/dashboard" {{-- class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"--}}>
+                                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ Auth::user()->name }}
                                     </a>
 
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> 登出 </a></li>
-                                    </ul>
+{{--                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="{{ url('/logout') }}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> 登出 </a></li>
+                                    </ul>--}}
                                 </li>
-                            @endif
+                            <li ><a href="{{ url('/logout') }}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> </a></li>
+
+                        @endif
                     </ul>
                 </div>
                 <!--/.nav-collapse -->
@@ -120,11 +122,18 @@
 </footer>
 
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="/js/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/custom.js"></script>
 
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')</script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+
+{{--<script src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>--}}
+{{--<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>--}}
+
+{{--<script src="/js/bootbox.min.js"></script>--}}
 </body>
 </html>

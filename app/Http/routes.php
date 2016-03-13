@@ -31,14 +31,22 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/home', 'HomeController@index');
     Route::get('/tips','HomeController@tips');
     Route::get('/price_list','HomeController@price_list');
+
+
     Route::get('/dashboard','DashboardController@show');
     Route::get('/dashboard/recipients','DashboardController@show');
     Route::resource('/dashboard/recipients','RecipientsController');
-//    Route::get('/dashboard/recipients/create','DashboardController@create');
-//    Route::get('/dashboard/recipients/update','DashboardController@update');
-//    Route::get('/dashboard/recipients', 'RecipientsController@show');
+    Route::resource('/dashboard/senders','SendersController');
     Route::get('/dashboard/reset_password','DashboardController@showResetPasswordForm');
+    Route::get('/dashboard/charge','UsersController@showChargeFrom');
+    Route::post('/dashboard/charge','UsersController@charge');
+    Route::get('/dashboard/profile','UsersController@editProfile');
+    Route::put('/dashboard/profile','UsersController@updateProfile');
     Route::post('/dashboard/reset_password','DashboardController@resetPassword');
+    Route::get('/dashboard/balances','UsersController@showBalances');
+
+
+
 });
 
 

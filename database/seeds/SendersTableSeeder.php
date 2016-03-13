@@ -11,8 +11,8 @@ class SendersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Recipient::class, 50)->create()->each(function($u) {
-            $u->save(factory(App\Post::class)->make());
+        factory(App\Sender::class, 50)->create()->each(function($u) {
+            $u->save();
         });
     }
 }

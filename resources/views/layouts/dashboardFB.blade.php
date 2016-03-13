@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,13 +16,12 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
+            <!-- Custom styles for this template -->
     <link href="/css/dashboard.css" rel="stylesheet">
-    {{--<link href="/css/custom.css" rel="stylesheet"/>--}}
-    {{--<link href="/css/bootply.css" rel="stylesheet"/>--}}
+    <link href="/css/custom.css" rel="stylesheet"/>
+    <link href="/css/bootply.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link href="/css/styles.css" rel="stylesheet">
     <link href="/css/patch.css" rel="stylesheet"/>
 
 
@@ -32,8 +30,16 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!-- CSS code from Bootply.com editor -->
+
+    {{--<script id="_carbonads_projs" type="text/javascript" src="//srv.carbonads.net/ads/C6AILKT.json?segment=placement:bootplycom&amp;callback=_carbonads_go"></script><script type="text/javascript" src="http://adn.fusionads.net/launchbit/9533/developers//bootplycom/8/?click_redir=%2F%2Fsrv.buysellads.com%2Fads%2Fclick%2Fx%2FGTND423MCAAD553WCKA4YKQWCWSILK3UF6BDPZ3JCEBI553JCV7DVK7KC6BDP27YCASIKK3EHJNCLSIZZRLCP7I35MNFV%3Fencredirect%3D&amp;r=145787808"></script></head>--}}
+
+<!-- HTML code from Bootply.com editor -->
+
 </head>
 <body>
+
 <div class="wrapper">
     <div class="box">
         <div class="row row-offcanvas row-offcanvas-left">
@@ -58,9 +64,9 @@
                     {{--<li @if ($page == '/dashboard/reset_password') class="active" @endif><a href="dashboard/reset_password"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> 更改密码</a></li>--}}
                 </ul>
                 <ul class="list-unstyled hidden-xs" id="sidebar-footer">
-                    {{--<li>
-                        <a href="http://www.bootply.com"><h3>Bootstrap</h3> <i class="glyphicon glyphicon-heart-empty"></i> Bootply</a>
-                    </li>--}}
+                    <li>
+                        {{--<a href="http://www.bootply.com"><h3>Bootstrap</h3> <i class="glyphicon glyphicon-heart-empty"></i> Bootply</a>--}}
+                    </li>
                 </ul>
 
                 <!-- tiny only nav-->
@@ -83,7 +89,7 @@
             <div class="column col-sm-10 col-xs-11" id="main">
 
                 <!-- top nav -->
-                <div class="navbar navbar-blue navbar-static-top">
+                <div class="navbar navbar navbar-static-top">
                     <div class="navbar-header">
                         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
                             <span class="sr-only">Toggle</span>
@@ -91,40 +97,21 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a href="/" class="navbar-brand logo">X</a>
+                        <a href="/" >X parcel</a>
                     </div>
                     <nav class="collapse navbar-collapse" role="navigation">
-                        {{--<form class="navbar-form navbar-left">
-                            <div class="input-group input-group-sm" style="max-width:360px;">
-                                <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                                </div>
-                            </div>
-                        </form>--}}
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <a href="/home"><i class="glyphicon glyphicon-home"></i> X parcel</a>
-                            </li>
 
-                            {{--<li>
-                                <a href="#postModal" role="button" data-toggle="modal"><i class="glyphicon glyphicon-plus"></i> Post</a>
-                            </li>
-                            <li>
-                                <a href="#"><span class="badge">badge</span></a>
-                            </li>--}}
+                        <ul class="nav navbar-nav">
+
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
+                            <li {{--class="dropdown"--}}>
+                                <a href="/dashboard" {{-- class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"--}}>
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ Auth::user()->name }}
+                                </a>
+                            </li>
 
-                            <li class="">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i></a>
-                            </li>
-                            <li class="">
-                                <a href="/logout" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-off"></i> 登出</a>
-                            </li>
-                            <li class="">
-                                <br>
-                            </li>
+                            <li ><a href="{{ url('/logout') }}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> </a></li>
                         </ul>
                     </nav>
                 </div>
@@ -132,23 +119,25 @@
 
                 <div class="padding">
                     <div class="full col-sm-9">
-
                         <!-- content -->
+                        <div class="row">
 
-                        @if (session('failed'))
-                            <div class="alert alert-danger">
-                                {{ session('failed') }}
-                            </div>
-                        @endif
-                        @if (session('success'))
-                            <div class="alert alert-success">
-                                {{ session('success') }}
-                            </div>
-                        @endif
-                        @yield("content")
+                            @if (session('failed'))
+                                <div class="alert alert-danger">
+                                    {{ session('failed') }}
+                                </div>
+                            @endif
+                            @if (session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                            @yield("content")
+                            <hr>
+                        </div><!--/row-->
+                    </div>
 
 
-                    </div><!-- /col-9 -->
                 </div><!-- /padding -->
             </div>
             <!-- /main -->
@@ -183,16 +172,46 @@
     </div>
 </div>
 
+{{--
+<script async="" src="//www.google-analytics.com/analytics.js"></script>
+--}}
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+{{--<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>--}}
+
+
+<!-- JavaScript jQuery code from Bootply.com editor  -->
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+        /* off-canvas sidebar toggle */
+
+        $('[data-toggle=offcanvas]').click(function() {
+            $(this).toggleClass('visible-xs text-center');
+            $(this).find('i').toggleClass('glyphicon-chevron-right glyphicon-chevron-left');
+            $('.row-offcanvas').toggleClass('active');
+            $('#lg-menu').toggleClass('hidden-xs').toggleClass('visible-xs');
+            $('#xs-menu').toggleClass('visible-xs').toggleClass('hidden-xs');
+            $('#btnShow').toggle();
+        });
+
+    });
+
+</script>
+
+
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 
 {{--<script src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>--}}
 
-<script src="/js/scripts.js"></script>
+{{--<script src="/js/bootbox.min.js"></script>--}}
 
 <script>
     $(document).ready(function() {
@@ -206,5 +225,6 @@
 
 </script>
 
-</body>
-</html>
+
+
+</body></html>

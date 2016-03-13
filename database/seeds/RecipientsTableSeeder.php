@@ -11,7 +11,7 @@ class RecipientsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Recipient::class, 2000)->create()->each(function($u) {
+        factory(App\Recipient::class, 50)->create()->each(function($u) {
             $u->save();
         });
     }

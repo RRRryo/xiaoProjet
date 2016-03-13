@@ -3,16 +3,19 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Cashier\Billable;
 
 class User extends Authenticatable
 {
+    use Billable;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','balance',
+        'name', 'email', 'password','balance','stripe_customer_id',
     ];
 
     /**
@@ -27,5 +30,15 @@ class User extends Authenticatable
     public function recipients()
     {
         return $this->hasMany('App\Recipient');
+    }
+
+    public function senders()
+    {
+        return $this->hasMany('App\Sender');
+    }
+
+    public function balances()
+    {
+        return $this->hasMany('App\Balance');
     }
 }

@@ -20,17 +20,16 @@ class DashboardController extends Controller
 
     public function show()
     {
-        return view("/dashboard/overview");
+        return view("dashboard.overview");
     }
 
     public function showResetPasswordForm()
     {
-        return view("/dashboard/reset_password");
+        return view("dashboard.reset_password");
     }
 
     public function resetPassword(Request $request)
     {
-//        return view("dashboard/reset_password");
         $this->validate($request, [
 //            'email' => 'required|email',
             'oldPassword' => 'required',
@@ -50,4 +49,5 @@ class DashboardController extends Controller
         }
 
     }
+
 }

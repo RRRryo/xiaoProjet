@@ -31,6 +31,30 @@ $factory->define(App\Recipient::class, function (Faker\Generator $faker)  use ($
         'city' => $faker->city,
         'country' => $faker->country,
         'user_id' => 1,
+    ];
 
+});
+
+
+$factory->define(App\Sender::class, function (Faker\Generator $faker)  use ($factory) {
+    return [
+        'name' => $faker->name,
+        'company' => $faker->name,
+        'address' => $faker->address,
+        'telephone' => $faker->phoneNumber,
+        'postal_code' => $faker->postcode,
+        'city' => $faker->city,
+        'country' => $faker->country,
+        'note' => $faker->text,
+        'user_id' => 1,
+    ];
+});
+
+
+$factory->define(App\Balance::class, function (Faker\Generator $faker)  use ($factory) {
+    return [
+        'balance' => $faker->randomDigit,
+        'description' => $faker->title,
+        'user_id' => 1,
     ];
 });
