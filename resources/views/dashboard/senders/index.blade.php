@@ -14,7 +14,7 @@
             <a type="button" class="btn btn-lg btn-link " href="/dashboard/senders/create"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加新寄件人</a>
         </div>
     </div>
-    <div id="exparcel_wrapper" class="dataTables_wrapper form-inline dt-bootstrap" >
+    <div id="exparcel_wrapper" class="table-responsive dataTables_wrapper form-inline dt-bootstrap" >
         <table id="xparcel" class="table table-striped " cellspacing="0" width="100%">
             <thead>
             <tr bgcolor="#FF9933" style="color: #ffffff">
