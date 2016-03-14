@@ -106,7 +106,7 @@
                 </div>
 
                 <!-- top nav -->
-                <div class="navbar navbar-inverse navbar-static-top">
+                <div class="container-fluid navbar navbar-inverse navbar-static-top">
 
                     <div class="navbar-header">
                         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -154,7 +154,7 @@
                 </div>
                 <!-- /top nav -->
 
-                <div class="padding">
+                <div class=" container-fluid">
                     <div class="full col-sm-9 panel">
 
                         <!-- content -->
