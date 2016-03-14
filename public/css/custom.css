@@ -29,25 +29,25 @@
 
 
 /* Sticky footer styles
--------------------------------------------------- */
+-------------------------------------------------- *//*
 html {
     position: relative;
     min-height: 100%;
 }
 body {
-    /* Margin bottom by footer height */
+    !* Margin bottom by footer height *!
     margin-bottom: 60px;
 }
 .footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    /* Set the fixed height of the footer here */
+    !* Set the fixed height of the footer here *!
     height: 60px;
     background-color: #f5f5f5;
 }
 
-
+*/
 /* Custom page CSS
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
@@ -61,15 +61,14 @@ body {
     margin: 20px 0;
 }
 
-
 /*menu dropdown on hover rather than click*/
-@media (min-width: 979px) {
+/*@media (min-width: 979px) {
     ul.nav li.dropdown:hover > ul.dropdown-menu {
         display: block;
     }
-}
+}*/
 
-
+.active > a,
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus,
 .navbar-inverse .navbar-nav > li > ul > li> a:hover,
@@ -88,6 +87,6 @@ body {
     /*display:        inline;*/
     /*color:          red;*/
     /*font-family:    Garamond;*/
-    font-size:      1.5em;
+    /*font-size:      1.5em;*/
     /*padding:        5px 20px;*/
 }

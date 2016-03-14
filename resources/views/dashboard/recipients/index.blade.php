@@ -15,9 +15,9 @@
         </div>
     </div>
     <div id="exparcel_wrapper" class="dataTables_wrapper form-inline dt-bootstrap" >
-        <table id="xparcel" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <table id="xparcel" class="table table-striped " cellspacing="0" width="100%">
             <thead>
-            <tr bgcolor="#FF9933">
+            <tr bgcolor="#FF9933" style="color: #ffffff">
                 <th>姓名</th>
                 <th>证件号或公司名称</th>
                 <th>地址</th>

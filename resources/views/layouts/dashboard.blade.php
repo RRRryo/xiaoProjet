@@ -19,7 +19,7 @@
 
     <!-- Custom styles for this template -->
     <link href="/css/dashboard.css" rel="stylesheet">
-    {{--<link href="/css/custom.css" rel="stylesheet"/>--}}
+    <link href="/css/custom.css" rel="stylesheet"/>
     {{--<link href="/css/bootply.css" rel="stylesheet"/>--}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -82,8 +82,32 @@
             <!-- main right col -->
             <div class="column col-sm-10 col-xs-11" id="main">
 
+                <div class="container-fluid" style="background: #ffffff">
+
+                    <div class="col-sm-5 " style="z-index: 1;">
+                        <div class="col-sm-12">
+                            <a href="/home"><img class="img-responsive" src="/img/remark.png" align="left" alt="X pacel" ></a>
+                        </div>
+                        <h3>法国邮政la Poste官方合作伙伴</h3>
+                        {{--<h1 style=" font-weight: bold;">X<span class="color_18">express</span></h1>--}}
+                        {{--<p>
+                            I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me and you can start adding your own content and make changes to the font. I’m a great place for you to tell a story and let your users know a little more about you.
+                        </p>--}}
+                    </div>
+
+                    <div class="col-sm-3 full-height pull-right" style="z-index: -1;">
+                        <div class="container-xs-height full-height">
+                            <div class="col-xs-height col-middle text-left">
+                                <div class="col-md-11 desktop-only" >
+                                    {{--<img src="/img/man1.png" align="right" alt="deliver man" >--}} </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- top nav -->
-                <div class="navbar navbar-blue navbar-static-top">
+                <div class="navbar navbar-inverse navbar-static-top">
+
                     <div class="navbar-header">
                         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
                             <span class="sr-only">Toggle</span>
@@ -91,7 +115,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a href="/" class="navbar-brand logo">X</a>
+                        <a href="/" class="navbar-brand logo">X parcel</a>
                     </div>
                     <nav class="collapse navbar-collapse" role="navigation">
                         {{--<form class="navbar-form navbar-left">
@@ -103,9 +127,9 @@
                             </div>
                         </form>--}}
                         <ul class="nav navbar-nav">
-                            <li>
+                           {{-- <li>
                                 <a href="/home"><i class="glyphicon glyphicon-home"></i> X parcel</a>
-                            </li>
+                            </li>--}}
 
                             {{--<li>
                                 <a href="#postModal" role="button" data-toggle="modal"><i class="glyphicon glyphicon-plus"></i> Post</a>
@@ -116,11 +140,11 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
 
-                            <li class="">
+                            {{--<li class="">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i></a>
-                            </li>
+                            </li>--}}
                             <li class="">
-                                <a href="/logout" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-off"></i> 登出</a>
+                                <a href="/logout" ><i class="glyphicon glyphicon-off"></i> &nbsp&nbsp</a>
                             </li>
                             <li class="">
                                 <br>
@@ -131,7 +155,7 @@
                 <!-- /top nav -->
 
                 <div class="padding">
-                    <div class="full col-sm-9">
+                    <div class="full col-sm-9 panel">
 
                         <!-- content -->
 

@@ -32,18 +32,8 @@
         <div class="row">
 
             <div class="col-md-12">
-                <div class="col-sm-3 thumbnail">
-                    <img src="img/truck.jpg" alt="truck" class="img-responsive ">
 
-                    <h2>Heading</h2>
-
-                <span class="text-muted">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                    condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-                    euismod. Donec sed odio dui. </span>
-
-                    <span class="text-muted"><a class="btn btn-default" href="#" role="button">View details »</a></span>
-                </div>
-                <div class="col-sm-3 thumbnail">
+                <div class="col-sm-4 thumbnail">
                     <img src="img/truck2.jpg" alt="truck" class="img-responsive">
 
                     <h2>Heading</h2>
@@ -54,7 +44,7 @@
 
                     <span class="text-muted"><a class="btn btn-default" href="#" role="button">View details »</a></span>
                 </div>
-                <div class="col-sm-3 thumbnail">
+                <div class="col-sm-4 thumbnail">
                     <img src="img/truck3.jpg" alt="truck" class="img-responsive">
 
                     <h2>Heading</h2>
@@ -65,8 +55,8 @@
 
                     <span class="text-muted"><a class="btn btn-default" href="#" role="button">View details »</a></span>
                 </div>
-                <div class="col-sm-3 thumbnail">
-                    <img src="img/truck3.jpg" alt="truck" class="img-responsive">
+                <div class="col-sm-4 thumbnail">
+                    <img src="img/truck.jpg" alt="truck" class="img-responsive">
 
                     <h2>Heading</h2>
 
@@ -79,6 +69,29 @@
 
             </div>
 
+        </div>
+
+        <div class="panel panel-warning" >
+            <div class="panel-heading "><h3>我们的合作伙伴</h3></div>
+            <div class="panel-body ">
+
+                <div class="col-sm-4 thumbnail">
+                    <a href="http://www.laposte.fr/">
+                        <img src="/img/laposte.png" alt="laposte" class="img-responsive">
+                    </a>
+                </div>
+                <div class="col-sm-4 thumbnail">
+                    <a href="http://www.bpost.be/">
+                      <img src="img/bposte.jpg" alt="bposte" class="img-responsive">
+                    </a>
+                </div>
+                <div class="col-sm-4 thumbnail">
+                    <a href="https://intl.alipay.com/">
+                    <img src="img/alipay.png" alt="alipay" class="img-responsive">
+                    </a>
+                </div>
+
+            </div>
         </div>
     </div>
     <!-- /container -->
