@@ -20,9 +20,12 @@ class DatabaseSeeder extends Seeder
         });*/
 
 //        $this->call(UsersTableSeeder::class);
-        $this->call(SendersTableSeeder::class);
-        $this->call(RecipientsTableSeeder::class);
-        $this->call(BalancesTableSeeder::class);
+       /* $this->call(SendersTableSeeder::class);
+        $this->call(RecipientsTableSeeder::class);*/
+//        $this->call(BalancesTableSeeder::class);
+//        $this->call(OrdersTableSeeder::class);
+        $this->call(OrderItemsTableSeeder::class);
+
 //        Model::reguard();
     }
 }

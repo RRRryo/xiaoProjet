@@ -64,8 +64,8 @@
             <ul class="nav nav-sidebar">
                 <li @if ($page == '/dashboard/overview') class="active" @endif><a href="/dashboard"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 总览</a></li>
                 <li @if ($page == '/dashboard/profile') class="active" @endif><a href="/dashboard/profile"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 我的资料</a></li>
-                <li @if ($page == '/dashboard/senders') class="active" @endif><a href="/dashboard/senders"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> 寄件人管理</a></li>
-                <li @if ($page == '/dashboard/recipients') class="active" @endif><a href="/dashboard/recipients"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> 收件人管理</a></li>
+                <li @if ($page == '/dashboard/sender') class="active" @endif><a href="/dashboard/sender"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> 寄件人管理</a></li>
+                <li @if ($page == '/dashboard/recipient') class="active" @endif><a href="/dashboard/recipient"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> 收件人管理</a></li>
                 <li @if ($page == '/dashboard/balances') class="active" @endif><a href="/dashboard/balances"><span class="glyphicon glyphicon-euro" aria-hidden="true"></span> 充值记录</a></li>
                 <li @if ($page == '/dashboard/') class="active" @endif><a href="#"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 订单记录</a></li></li>
                 <li @if ($page == '/dashboard/charge') class="active" @endif><a href="/dashboard/charge"><span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span> 我要充值</a></li></li>

@@ -13,16 +13,18 @@ class CreateBalancesTable extends Migration
     public function up()
     {
         Schema::create('balances', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->decimal('balance', 10, 2);
+
+            $table->decimal('amount',10,2);
             $table->string('description');
-            $table->integer('user_id');
+
             $table->timestamps();
+            $table->integer('user_id')->unsigned();
 
             $table->foreign('user_id')->references('id')->on('users');
 
         });
+
     }
 
     /**

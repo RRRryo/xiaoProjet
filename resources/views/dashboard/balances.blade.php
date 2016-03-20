@@ -4,11 +4,10 @@
 
       <h2>我的余额为 {{$final_balance}} €</h2>
 
-
-      <div id="exparcel_wrapper" class="dataTables_wrapper form-inline dt-bootstrap" >
-            <table id="xparcel" class="table table-striped table-bordered" cellspacing="0" width="100%">
+      <div id="exparcel_wrapper" class=" dataTables_wrapper form-inline dt-bootstrap table-responsive" >
+            <table id="xparcel" class="table table-striped " cellspacing="0" width="100%">
                   <thead>
-                  <tr bgcolor="#FF9933">
+                  <tr bgcolor="#FF9933" style="color: #ffffff">
                         <th>日期</th>
                         <th>额度</th>
                         <th>操作</th>

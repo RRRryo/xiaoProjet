@@ -84,7 +84,7 @@ class UsersController extends Controller
         $rules = array(
             'name'       => 'required|max:50',
             'address' => 'required|max:255',
-            'postal_code' => 'required|numeric',
+            'postal_code' => 'required',
             'city' => 'required|max:50',
             'country' => 'required|max:50',
             'telephone' => 'required|max:50',

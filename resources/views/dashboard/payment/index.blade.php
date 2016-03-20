@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-<?php $page = "/dashboard/senders"  ?>
+<?php $page = "/dashboard/sender"  ?>
 @section('content')
 
 

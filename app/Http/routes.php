@@ -32,11 +32,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/tips','HomeController@tips');
     Route::get('/price_list','HomeController@price_list');
 
-
     Route::get('/dashboard','DashboardController@show');
-    Route::get('/dashboard/recipients','DashboardController@show');
-    Route::resource('/dashboard/recipients','RecipientsController');
-    Route::resource('/dashboard/senders','SendersController');
+    Route::resource('/dashboard/recipient','RecipientsController');
+    Route::resource('/dashboard/sender','SendersController');
     Route::get('/dashboard/reset_password','DashboardController@showResetPasswordForm');
     Route::get('/dashboard/charge','UsersController@showChargeFrom');
     Route::post('/dashboard/charge','UsersController@charge');
@@ -44,7 +42,15 @@ Route::group(['middleware' => ['web']], function () {
     Route::put('/dashboard/profile','UsersController@updateProfile');
     Route::post('/dashboard/reset_password','DashboardController@resetPassword');
     Route::get('/dashboard/balances','UsersController@showBalances');
+    Route::get('/dashboard/order_sender','OrdersController@completeSenderForm');
+    Route::post('/dashboard/order_sender','OrdersController@saveSenderInfo');
+    Route::get('/dashboard/order_recipient','OrdersController@completeRecipientForm');
+    Route::post('/dashboard/order_recipient','OrdersController@saveRecipientInfo');
+    Route::get('/dashboard/order_items','OrdersController@completeItemsForm');
+    Route::post('/dashboard/order_items','OrdersController@saveItemsForm');
 
+    Route::get('/dashboard/orders','OrdersController@listOrders');
+    Route::get('/dashboard/order_detail/{orderId}','OrdersController@orderDetail');
 
 
 });

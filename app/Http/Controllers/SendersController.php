@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 
+use App\sender;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
-class SendersController extends Controller
+class sendersController extends Controller
 {
     private $max_nb_senders = 50;
     public function __construct()
@@ -20,56 +22,49 @@ class SendersController extends Controller
     {
         $user = \Auth::user();
         $senders = $user->senders()->get();
-
-        return view('dashboard.senders.index', compact('senders'));
+        return view('dashboard.sender.index', compact('senders'));
     }
 
-    public function edit($senders) {
+    public function edit($sender) {
         $user = \Auth::user();
-        $sender = $user->senders()->findOrFail($senders);
-        return view('dashboard.senders.edit', compact('sender'));
+        $sender = $user->senders()->find($sender);
+        return view('dashboard.sender.edit', compact('sender'));
     }
 
 
     public function create() {
         $user = \Auth::user();
         if ($user->senders()->count() >= $this->max_nb_senders) {
-            return redirect('/dashboard/senders')->with('failed', '已经存太多啦，先清理一下吧！');
+            return redirect('/dashboard/sender')->with('failed', '已经存太多啦，先清理一下吧！');
         }
-        return view('dashboard.senders.create');
+        return view('dashboard.sender.create');
     }
 
-    public function update(Request $request, $senders){
-        $this->validateSender($request);
+    public function update(Requests\UpdatesenderRequest $request, $sender){
 
-        $user = \Auth::user();
-        $sender = $user->senders()->findOrFail($senders);
+        $senderDAO = sender::find($sender);
+        $senderDAO-> name = $request['name'];
+        $senderDAO-> company = $request['company'];
+        $senderDAO-> address = $request['address'];
+        $senderDAO-> telephone = $request['telephone'];
+        $senderDAO-> postal_code = $request['postal_code'];
+        $senderDAO-> city = $request['city'];
+        $senderDAO-> country = $request['country'];
 
-        $sender-> name = $request['name'];
-        $sender-> company = $request['company'];
-        $sender-> address = $request['address'];
-        $sender-> telephone = $request['telephone'];
-        $sender-> postal_code = $request['postal_code'];
-        $sender-> city = $request['city'];
-        $sender-> country = $request['country'];
-        $sender-> note = $request['note'];
+        $senderDAO->save();
 
-        $sender->save();
-
-        return redirect('/dashboard/senders')->with('success', '寄件人已更新');
+        return redirect('/dashboard/sender')->with('success', '寄件人已更新');
     }
 
     /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request) {
+    public function store(Requests\StoresenderRequest $request) {
         $user = \Auth::user();
-        if ($user->senders()->count() > $this->max_nb_senders) {
-            return redirect('/dashboard/senders')->with('failed', '已经存太多啦，先清理一下吧！');
+        if ($user->senders()->count() >= $this->max_nb_senders) {
+            return redirect('/dashboard/sender')->with('failed', '已经存太多啦，先清理一下吧！');
         }
-
-        $this->validateSender($request);
 
         $user->senders()->create([
             'name' => $request['name'],
@@ -79,42 +74,21 @@ class SendersController extends Controller
             'city' => $request['city'],
             'country' => $request['country'],
             'telephone' => $request['telephone'],
-            'note' => $request['note'],
         ]);
 
-        return redirect('/dashboard/senders')->with('success', '新寄件人已创建');
+        return redirect('/dashboard/sender')->with('success', '新寄件人已创建');
     }
 
 
-    public function validateSender( $request) {
-        $rules = array(
-            'name'       => 'required|max:50',
-            'company'      => 'required|max:50',
-            'address' => 'required|max:255',
-            'postal_code' => 'required|numeric',
-            'city' => 'required|max:50',
-            'country' => 'required|max:50',
-            'telephone' => 'required|max:50',
-            'note' => 'max:500',
-        );
-        $this->validate($request, $rules);
-    }
 
-    public function destroy( $senders) {
-        $user = \Auth::user();
-        $sender = $user->senders()->findOrFail($senders);
-        $sender->delete();
-        return redirect('/dashboard/senders')->with('success', '寄件人已删除');
+    public function destroy( $sender) {
+        $senderDAO = sender::where('id', $sender)
+            ->where('user_id', Auth::id());
+//        $user->senders()->find($sender);
+        $senderDAO->delete();
+        return redirect('/dashboard/sender')->with('success', '寄件人已删除');
 
     }
 
 
-    /*function isOwner($sender_id) {
-        $user = \Auth::user();
-        $sender = Sender::find($sender_id);
-        if($sender !== NULL && $sender->user_id == $user->id) {
-            return true;
-        }
-        return false;;
-    }*/
 }

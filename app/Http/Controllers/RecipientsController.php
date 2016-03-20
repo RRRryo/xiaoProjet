@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 
+use App\Recipient;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
 class RecipientsController extends Controller
 {
@@ -20,55 +22,49 @@ class RecipientsController extends Controller
     {
         $user = \Auth::user();
         $recipients = $user->recipients()->get();
-        return view('dashboard.recipients.index', compact('recipients'));
+        return view('dashboard.recipient.index', compact('recipients'));
     }
 
-    public function edit($recipients) {
+    public function edit($recipient) {
         $user = \Auth::user();
-        $recipient = $user->recipients()->findOrFail($recipients);
-        return view('dashboard.recipients.edit', compact('recipient'));
+        $recipient = $user->recipients()->find($recipient);
+        return view('dashboard.recipient.edit', compact('recipient'));
     }
 
 
     public function create() {
         $user = \Auth::user();
-        if ($user->recipients()->count() > $this->max_nb_recipients) {
-            return redirect('/dashboard/recipients')->with('failed', '已经存太多啦，先清理一下吧！');
+        if ($user->recipients()->count() >= $this->max_nb_recipients) {
+            return redirect('/dashboard/recipient')->with('failed', '已经存太多啦，先清理一下吧！');
         }
-        return view('dashboard.recipients.create');
+        return view('dashboard.recipient.create');
     }
 
-    public function update(Request $request, $recipients){
-        $this->validateRecipient($request);
+    public function update(Requests\UpdateRecipientRequest $request, $recipient){
 
-        $user = \Auth::user();
-        $recipient = $user->recipients()->findOrFail($recipients);
+        $recipientDAO = Recipient::find($recipient);
+        $recipientDAO-> name = $request['name'];
+        $recipientDAO-> company = $request['company'];
+        $recipientDAO-> address = $request['address'];
+        $recipientDAO-> telephone = $request['telephone'];
+        $recipientDAO-> postal_code = $request['postal_code'];
+        $recipientDAO-> city = $request['city'];
+        $recipientDAO-> country = $request['country'];
 
+        $recipientDAO->save();
 
-        $recipient-> name = $request['name'];
-        $recipient-> company = $request['company'];
-        $recipient-> address = $request['address'];
-        $recipient-> telephone = $request['telephone'];
-        $recipient-> postal_code = $request['postal_code'];
-        $recipient-> city = $request['city'];
-        $recipient-> country = $request['country'];
-
-        $recipient->save();
-
-        return redirect('/dashboard/recipients')->with('success', '寄件人已更新');
+        return redirect('/dashboard/recipient')->with('success', '寄件人已更新');
     }
 
     /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request) {
+    public function store(Requests\StoreRecipientRequest $request) {
         $user = \Auth::user();
         if ($user->recipients()->count() >= $this->max_nb_recipients) {
-            return redirect('/dashboard/recipients')->with('failed', '已经存太多啦，先清理一下吧！');
+            return redirect('/dashboard/recipient')->with('failed', '已经存太多啦，先清理一下吧！');
         }
-
-        $this->validateRecipient($request);
 
         $user->recipients()->create([
             'name' => $request['name'],
@@ -80,39 +76,18 @@ class RecipientsController extends Controller
             'telephone' => $request['telephone'],
         ]);
 
-        return redirect('/dashboard/recipients')->with('success', '新寄件人已创建');
+        return redirect('/dashboard/recipient')->with('success', '新寄件人已创建');
     }
 
 
-    public function validateRecipient( $request) {
-        $rules = array(
-            'name'       => 'required|max:50',
-            'company'      => 'required|max:50',
-            'address' => 'required|max:255',
-            'postal_code' => 'required|numeric',
-            'city' => 'required|max:50',
-            'country' => 'required|max:50',
-            'telephone' => 'required|max:50',
-//            'note' => 'max:500',
-        );
-        $this->validate($request, $rules);
-    }
 
-    public function destroy( $recipients) {
-        $user = \Auth::user();
-        $recipient = $user->recipients()->findOrFail($recipients);
-        $recipient->delete();
-        return redirect('/dashboard/recipients')->with('success', '寄件人已删除');
+    public function destroy( $recipient) {
+        $recipientDAO = Recipient::where('id', $recipient)
+            ->where('user_id', Auth::id());
+//        $user->recipients()->find($recipient);
+        $recipientDAO->delete();
+        return redirect('/dashboard/recipient')->with('success', '寄件人已删除');
 
     }
 
-
-    /*function isOwner($recipient_id) {
-        $user = \Auth::user();
-        $recipient = Recipient::find($recipient_id);
-        if($recipient !== NULL && $recipient->user_id == $user->id) {
-            return true;
-        }
-        return false;;
-    }*/
 }

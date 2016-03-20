@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-<?php $page="/dashboard/recipients"  ?>
+<?php $page="/dashboard/recipient"  ?>
 @section('content')
 
     <div class="row">
@@ -7,7 +7,7 @@
             <div class="panel panel-warning">
                 <div class="panel-heading"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 修改收件人</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/dashboard/recipients/'. $recipient->id) }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/dashboard/recipient/'. $recipient->id) }}">
                         {!! csrf_field() !!}
 
                         <input type="hidden" name="_method" value="PUT">
@@ -128,6 +128,8 @@
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary btn-warning">
                                     <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> 保存收件人 </button>
+                                <button onclick="window.history.back()" class="btn btn-danger pull-right"> 取消 </button>
+
                             </div>
                         </div>
                     </form>
