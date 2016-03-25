@@ -2,7 +2,7 @@
 <?php $page = "/dashboard/sender"  ?>
 @section('content')
 
-    <h2 class="sub-header">我一共有{{$senders->count()}}个寄件人</h2>
+    <h4 class="sub-header">我一共有{{$senders->count()}}个寄件人</h4>
     <div class="">
         {{--<form class="form-group" action="/dashboard/sender" method="GET">
             <div class="col-md-3"><input class="form-control" type="text" name="search" value="" placeholder="姓名、公司、地址    或者电话..."/></div>

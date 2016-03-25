@@ -25,7 +25,7 @@ class UsersController extends Controller
     public function charge(Request $request)
     {
         $rules = array(
-            'amount'       => 'required',
+            'amount'       => 'numeric|required',
         );
         $this->validate($request, $rules);
 

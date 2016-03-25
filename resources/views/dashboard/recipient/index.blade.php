@@ -2,7 +2,7 @@
 <?php $page = "/dashboard/recipient"  ?>
 @section('content')
 
-    <h2 class="sub-header">我一共有{{$recipients->count()}}个收件人</h2>
+    <h4 class="sub-header">我一共有{{$recipients->count()}}个收件人</h4>
 
     <div class="row panel">
         {{--<form class="form-group" action="/dashboard/recipient" method="GET">

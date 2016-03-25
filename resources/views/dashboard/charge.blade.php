@@ -4,7 +4,7 @@
       <h2>充值金额</h2>
       <form method="post" id="form_transfer" action="/dashboard/charge">
             {!! csrf_field() !!}
-            <select name="amount" id="amount" class="form-control" style="width:150px;display:inline-block;" required="">
+            <select name="amount" id="amount" class="form-control" style="width:150px;display:inline-block;" required="" {{--onchange="this.form.submit()"--}}>
                   <option value="5000">50€</option>
                   <option value="10000">100€</option>
                   <option value="15000">150€</option>

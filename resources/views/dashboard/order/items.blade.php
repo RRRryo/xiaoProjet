@@ -195,7 +195,7 @@
                             <label class="control-label" for="baoxian">不购买保险</label>
                         </div>
                         <div class="col-sm-3">
-                            <div class="input-group has-feedback">
+                            <div class="input-group has-feedback" id="insurance_amount_div">
                                 <span class="input-group-addon">保险额度（1-10）</span>
                                 <input type="text" class="form-control" id="baoxianmoney" name="baoxianmoney" value="">
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
@@ -222,5 +222,16 @@
 @stop
 
 @section('javascript')
+    <script>
+        $(document).ready(function(){
+            $("input[name$='baoxian']").click(function() {
+                var value = $(this).val();
+                if (value == "true")
+                    $("#insurance_amount_div").show();
+                else
+                    $("#insurance_amount_div").hide();
+            });
+        });
+    </script>
     <script src="/js/new_order.js"></script>
 @stop
