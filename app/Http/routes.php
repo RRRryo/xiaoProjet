@@ -46,11 +46,15 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/dashboard/order_sender','OrdersController@saveSenderInfo');
     Route::get('/dashboard/order_recipient','OrdersController@completeRecipientForm');
     Route::post('/dashboard/order_recipient','OrdersController@saveRecipientInfo');
-    Route::get('/dashboard/order_items','OrdersController@completeItemsForm');
     Route::post('/dashboard/order_items','OrdersController@saveItemsForm');
+
+    Route::get('/dashboard/order_items','OrdersController@completeItemsForm');
 
     Route::get('/dashboard/orders','OrdersController@listOrders');
     Route::get('/dashboard/order_detail/{orderId}','OrdersController@orderDetail');
+    Route::get('/dashboard/create_order','OrdersController@createOrder');
+
+
 
 
 });

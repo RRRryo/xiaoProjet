@@ -46,6 +46,7 @@ $factory->define(App\Sender::class, function (Faker\Generator $faker)  use ($fac
         'city' => $faker->city,
         'country' => $faker->country,
         'note' => $faker->text,
+        'email' => $faker->email,
         'user_id' => 1,
     ];
 });

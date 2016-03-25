@@ -287,3 +287,12 @@ small.text-muted {
         padding-left:3px;
     }
 }
+
+.form-horizontal .control-label {
+     text-align:left;
+}
+
+.form-horizontal .form-group {
+    margin-right : auto;
+    margin-left : auto;
+}

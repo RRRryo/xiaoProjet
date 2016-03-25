@@ -4,8 +4,6 @@
 @section('content')
       <form action="/dashboard/pay" method="POST">
             {!! csrf_field() !!}
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
             <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                     data-key="pk_test_78wCQNrauFORPShFLhjRrs1E"

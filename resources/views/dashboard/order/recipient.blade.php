@@ -21,8 +21,6 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/dashboard/order_recipient') }}">
                         {!! csrf_field() !!}
 
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">姓名</label>
 
@@ -123,9 +121,9 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <a class="btn btn-primary btn-warning pull-left" href="/dashboard/order_sender">
+                                <a class="btn btn-lg btn-warning pull-left" href="/dashboard/order_sender">
                                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> 上一步 </a>
-                                <button type="submit" class="btn btn-primary btn-warning pull-right">
+                                <button type="submit" class="btn btn-lg btn-warning pull-right">
                                      下一步 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
                             </div>
                         </div>

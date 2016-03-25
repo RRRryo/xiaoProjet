@@ -4,7 +4,6 @@
       <h2>充值金额</h2>
       <form method="post" id="form_transfer" action="/dashboard/charge">
             {!! csrf_field() !!}
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <select name="amount" id="amount" class="form-control" style="width:150px;display:inline-block;" required="">
                   <option value="5000">50€</option>
                   <option value="10000">100€</option>

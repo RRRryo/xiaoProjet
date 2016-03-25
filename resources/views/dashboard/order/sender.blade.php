@@ -21,8 +21,6 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/dashboard/order_sender') }}">
                         {!! csrf_field() !!}
 
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">姓名</label>
 
@@ -134,9 +132,23 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">电子邮箱</label>
+
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" name="email" value="{{ $sender->email }}" placeholder="输入邮箱" required="" autofocus="">
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary btn-warning pull-right">
+                                <button type="submit" class="btn btn-lg btn-warning pull-right">
                                      下一步 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
                             </div>
                         </div>

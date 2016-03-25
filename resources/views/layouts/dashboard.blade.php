@@ -72,7 +72,6 @@
                     <li @if ($page == '/dashboard/balances') class="active" @endif><a href="/dashboard/balances"><span class="glyphicon glyphicon-euro" aria-hidden="true"></span></a></li>
                     <li @if ($page == '/dashboard/orders') class="active" @endif><a href="/dashboard/orders"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a></li></li>
                     <li @if ($page == '/dashboard/charge') class="active" @endif><a href="/dashboard/charge"><span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span></a></li></li>
-                    <li @if ($page == '/dashboard/') class="active" @endif><a href="#"><span class="glyphicon glyphicon-send" aria-hidden="true"></span></a></li></li>
                     <li @if ($page == '/dashboard/new_order') class="active" @endif><a href="/dashboard/order_sender"><span class="glyphicon glyphicon-send" aria-hidden="true"></span></a></li></li>
                 </ul>
 
@@ -223,6 +222,7 @@
 <script>
     $(document).ready(function() {
         $('#xparcel').DataTable({
+            "order": [[ 0, "desc" ]],
             "language": {
                 "url": "https://cdn.datatables.net/plug-ins/1.10.11/i18n/Chinese.json"
             }

@@ -48,68 +48,68 @@
         </div>
     </div>
 </div>
-
-<div class="container-fluid">
-    <div class="navbar-primary">
-        <!-- Static navbar -->
-        <nav class="navbar  navbar-inverse navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                            aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#"></a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav" >
-                        <li @if ($page == '/home') class="active" @endif ><a href="/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 首页</a></li>
-                        <li @if ($page == '/price_list') class="active" @endif ><a href="/price_list"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 价格列表</a></li>
-                        <li @if ($page == '/tips') class="active" @endif ><a href="/tips"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span> 邮寄须知</a></li>
-
-                        {{--<li class="dropdown @if ($page == 'price_list' || $page == 'tips' ) active @endif" >
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                               aria-expanded="false">国际快递<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">订单系统</a></li>
-                                <li @if ($page == 'price_list') class="active" @endif><a href="price_list">快递网站报价</a></li>
-                                <li @if ($page == 'tips') class="active" @endif><a href="tips">邮寄须知</a></li>
-                                <li><a href="#">菜鸟代购</a></li>
-                            </ul>
-                        </li>--}}
-
-                        {{--<li class="dropdown" ><a href="#">网上商城</a></li>--}}
-
-                    </ul>
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                            @if (Auth::guest())
-                            <li @if ($page == 'register') class="active" @endif><a href="{{ url('/register') }}"><span class="glyphicon glyphicon-registration-mark" aria-hidden="true"></span> 注册</a></li>
-                            <li @if ($page == 'login') class="active" @endif><a href="{{ url('/login') }}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 登录</a></li>
-                            @else
-                                <li {{--class="dropdown"--}}>
-                                    <a href="/dashboard" {{-- class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"--}}>
-                                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ Auth::user()->name }}
-                                    </a>
-
-{{--                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="{{ url('/logout') }}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> 登出 </a></li>
-                                    </ul>--}}
-                                </li>
-                            <li ><a href="{{ url('/logout') }}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> </a></li>
-
-                        @endif
-                    </ul>
-                </div>
-                <!--/.nav-collapse -->
+<div class="navbar-primary">
+    <!-- Static navbar -->
+    <nav class="navbar  navbar-inverse navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"></a>
             </div>
-            <!--/.container-fluid -->
-        </nav>
-    </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav" >
+                    <li @if ($page == '/home') class="active" @endif ><a href="/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 首页</a></li>
+                    <li @if ($page == '/price_list') class="active" @endif ><a href="/price_list"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 价格列表</a></li>
+                    <li @if ($page == '/tips') class="active" @endif ><a href="/tips"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span> 邮寄须知</a></li>
+
+                    {{--<li class="dropdown @if ($page == 'price_list' || $page == 'tips' ) active @endif" >
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">国际快递<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">订单系统</a></li>
+                            <li @if ($page == 'price_list') class="active" @endif><a href="price_list">快递网站报价</a></li>
+                            <li @if ($page == 'tips') class="active" @endif><a href="tips">邮寄须知</a></li>
+                            <li><a href="#">菜鸟代购</a></li>
+                        </ul>
+                    </li>--}}
+
+                    {{--<li class="dropdown" ><a href="#">网上商城</a></li>--}}
+
+                </ul>
+                <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
+                        <li @if ($page == 'register') class="active" @endif><a href="{{ url('/register') }}"><span class="glyphicon glyphicon-registration-mark" aria-hidden="true"></span> 注册</a></li>
+                        <li @if ($page == 'login') class="active" @endif><a href="{{ url('/login') }}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 登录</a></li>
+                    @else
+                        <li {{--class="dropdown"--}}>
+                            <a href="/dashboard" {{-- class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"--}}>
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ Auth::user()->name }}
+                            </a>
+
+                            {{--                                    <ul class="dropdown-menu" role="menu">
+                                                                    <li><a href="{{ url('/logout') }}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> 登出 </a></li>
+                                                                </ul>--}}
+                        </li>
+                        <li ><a href="{{ url('/logout') }}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> </a></li>
+
+                    @endif
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+        <!--/.container-fluid -->
+    </nav>
+</div>
+<div class="container-fluid">
+
 </div>
 
     @yield('content')

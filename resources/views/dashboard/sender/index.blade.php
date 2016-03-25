@@ -2,8 +2,7 @@
 <?php $page = "/dashboard/sender"  ?>
 @section('content')
 
-    <h2 class="sub-header">我的寄件人</h2>
-
+    <h2 class="sub-header">我一共有{{$senders->count()}}个寄件人</h2>
     <div class="">
         {{--<form class="form-group" action="/dashboard/sender" method="GET">
             <div class="col-md-3"><input class="form-control" type="text" name="search" value="" placeholder="姓名、公司、地址    或者电话..."/></div>
@@ -37,7 +36,7 @@
                     <td><button class="btn-link"><a href="{{ URL::to('/dashboard/sender/' . $sender->id . '/edit') }}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 修改</a></button></td>
                     <form action="{{ URL::to('/dashboard/sender/' . $sender->id ) }}" method="POST">
                         <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        {!! csrf_field() !!}
                         <td>
                             <button class="btn-link" onclick="return confirm('您确定要删除已选寄件人信息吗?')" type="submit" ><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 删除</button></td>
                     </form>

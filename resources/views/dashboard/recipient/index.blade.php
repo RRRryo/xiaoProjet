@@ -37,7 +37,7 @@
                     <td><button class="btn-link"><a href="{{ URL::to('/dashboard/recipient/' . $recipient->id . '/edit') }}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 修改</a></button></td>
                     <form action="{{ URL::to('/dashboard/recipient/' . $recipient->id ) }}" method="POST">
                         <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        {!! csrf_field() !!}
                         <td>
                             <button class="btn-link" onclick="return confirm('您确定要删除已选收件人信息吗?')" type="submit" ><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 删除</button></td>
                     </form>

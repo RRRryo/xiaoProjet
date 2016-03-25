@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\OrderItem;
 use App\Recipient;
 use App\Sender;
 
@@ -59,6 +60,7 @@ class OrdersController extends Controller
         $sender-> postal_code = $request['postal_code'];
         $sender-> city = $request['city'];
         $sender-> country = $request['country'];
+        $sender-> email = $request['email'];
         $sender-> note = $request['note'];
 
         $userId = \Auth::user()->id;
@@ -111,29 +113,86 @@ class OrdersController extends Controller
     }
 
     public function completeItemsForm() {
+        /*$user = \Auth::user();
+        $userId = $user->id;
+
+        $order = session('order_recipient_user_'.$userId);*/
         return view("dashboard.order.items");
     }
 
     public function saveItemsForm(Requests\StoreOrderRequest $request) {
+        $user = \Auth::user();
+        $userId = $user->id;
+
+        $sender = session('order_sender_user_'.$userId);
+        $recipient = session('order_recipient_user_'.$userId);
+
         $order = new Order();
+
         $order->real_weight = $request->weightreal;
 
         $order->length = $request->length;
         $order->width = $request->width;
         $order->height = $request->height;
         $order->type_colis = $request->type_colis;
-        $order->dim_weight = $request->weightdim;
-        $order->buy_weight = $request->weightbuy;
+        $order->dim_weight = $this->calculateDimWeight($order->length,$order->width,$order->height);
+        $order->buy_weight = $this->calculateBuyWeight($order->real_weight,$order->dim_weight);
 
-        /*$order->real_weight = $request->objname;
-        $order->real_weight = $request->objpoid;
-        $order->real_weight = $request->objnum;
-        $order->real_weight = $request->objval;
-        $order->real_weight = $request->objpays;*/
+        $order->sender_name = $sender->name;
+        $order->sender_email = $sender->email;
+        $order->sender_address = $sender->address;
+        $order->sender_postal_code = $sender->postal_code;
+        $order->sender_city = $sender->city;
+        $order->sender_country = $sender->country;
+        $order->sender_tel = $sender->telephone;
+
+        $order->recipient_name = $recipient->name;
+        $order->recipient_address = $recipient->address;
+        $order->recipient_postal_code = $recipient->postal_code;
+        $order->recipient_city = $recipient->city;
+        $order->recipient_country = $recipient->country;
+        $order->recipient_tel = $recipient->telephone;
+
         $order->insurance = $request->baoxian;
         $order->insurance_amount = $request->baoxianmoney;
 
-        return view("dashboard.order.order_preview", compact("order"));
+//        $user->orders()->save($order);
+
+        $items = array();
+
+        $item = new  OrderItem();
+        $item->name = $request->objname;
+        $item->weight = $request->objpoid;
+        $item->quantity = $request->objnum;
+        $item->value = $request->objval;
+        $item->origin = $request->objpays;
+
+        array_push($items, $item);
+
+//        $order->items()->save($item);
+
+        $objLength = $request->addobjname;
+        for($i=0; $i<count($objLength);$i++) {
+            $orderItem = new  OrderItem();
+            $orderItem->name = $request->addobjname[$i];
+            $orderItem->weight = $request->addobjpoid[$i];
+            $orderItem->quantity = $request->addobjnum[$i];
+            $orderItem->value = $request->addobjval[$i];
+            $orderItem->origin = $request->addobjpays[$i];
+
+//            $order->items()->save($orderItem);
+            array_push($items, $orderItem);
+        }
+
+        session(['order_user_'.$userId => $order]);
+        session(['order_items_user_'.$userId => $items]);
+
+        $totalAmount = 0;
+        foreach($items as $it) {
+            $totalAmount +=  $it->value;
+        }
+
+        return view("dashboard.order.order_preview")->with("order",$order)->with("items",$items)->with("totalAmount",$totalAmount);
 
     }
 
@@ -155,4 +214,30 @@ class OrdersController extends Controller
 
     }
 
+    public function calculateDimWeight($length,$width,$height) {
+        return $length*$width*$height/5000;
+    }
+
+    public function calculateBuyWeight($realWeight,$dim_weight) {
+        $result= max($realWeight,$dim_weight);
+        return ceil($result);
+    }
+
+
+    public function createOrder(Request $request) {
+        $user = \Auth::user();
+        $userId = $user->id;
+
+        $order = session('order_user_'.$userId);
+        $items = session('order_items_user_'.$userId);
+        $user->orders()->save($order);
+        $order->items()->saveMany($items);
+
+        $request->session()->forget('order_user_'.$userId);
+        $request->session()->forget('order_items_user_'.$userId);
+        $request->session()->forget('order_recipient_user_'.$userId);
+        $request->session()->forget('order_sender_user_'.$userId);
+
+        return $this->listOrders();
+    }
 }
